@@ -2,7 +2,7 @@ package com.educandoweb.course.config;
 
 import com.educandoweb.course.entities.Order;
 import com.educandoweb.course.entities.User;
-import com.educandoweb.course.model.OrderStatus;
+import com.educandoweb.course.entities.enums.OrderStatus;
 import com.educandoweb.course.repository.OrderRepository;
 import com.educandoweb.course.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
