@@ -2,7 +2,7 @@ package com.educandoweb.course.model;
 
 public enum OrderStatus {
 
-    WAIING_PAYMENT,
+    WAITING_PAYMENT,
     PAID,
     SHIPPED,
     DELIVERED,

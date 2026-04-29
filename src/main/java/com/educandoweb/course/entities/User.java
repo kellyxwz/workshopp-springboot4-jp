@@ -1,8 +1,12 @@
 package com.educandoweb.course.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_user")
@@ -18,12 +22,24 @@ public class User implements Serializable {
     private String phone;
     private String password;
 
+    @JsonManagedReference
+    @OneToMany(mappedBy = "client")
+    private List<Order> orders = new ArrayList<>();
+
     public User(Long id, String name, String email, String phone, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.password = password;
+    }
+
+    public User() {
+
+    }
+
+    public List<Order> getOrders() {
+        return orders;
     }
 
     public Long getId() {
