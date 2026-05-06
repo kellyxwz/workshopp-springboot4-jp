@@ -1,12 +1,31 @@
 package com.educandoweb.course.entities;
 
-public class Product {
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
+public class Product implements Serializable {
+
+    public final static long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String description;
     private Double price;
     private String imgUrl;
+
+    @JsonManagedReference
+    @ManyToMany(mappedBy = "product")
+    public Set<Category> list = new HashSet<>();
 
     public Product() {
     }
